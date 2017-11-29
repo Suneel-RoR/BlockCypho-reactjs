@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <BrowserRouter>
         <div>
@@ -57,14 +56,17 @@ class App extends Component {
             <Route
               exact
               path="/:coin/:chain/wallets"
-              render={({ params }) => {
+              render={({ match }) => {
                 if (this.state.token) {
                   return (
                     <div>
-                      <Menu coin={"bcy"} chain={"test"} />
+                      <Menu
+                        coin={match.params.coin}
+                        chain={match.params.chain}
+                      />
                       <Wallets
-                        coin={"bcy"}
-                        chain={"test"}
+                        coin={match.params.coin}
+                        chain={match.params.chain}
                         token={this.state.token}
                       />
                     </div>
@@ -78,22 +80,20 @@ class App extends Component {
             <Route
               exactly
               path="/:coin/:chain/wallets/:wallet/addrs"
-              render={({ params }) => {
+              render={({ match }) => {
                 if (this.state.token) {
                   return (
                     <div>
-                      <Menu coin={"bcy"} chain={"test"} />
+                      <Menu
+                        coin={match.params.coin}
+                        chain={match.params.chain}
+                      />
                       <WalletAddresses
-                        coin={"bcy"}
-                        chain={"test"}
-                        wallet={"Suneel"}
+                        coin={match.params.coin}
+                        chain={match.params.chain}
+                        wallet={match.params.wallet}
                         token={this.state.token}
                       />
-                      {/* <WalletAddresses
-                      coin={params.coin}
-                      chain={params.chain}
-                      wallet={params.wallet}
-                      token={this.state.token}/> */}
                     </div>
                   );
                 } else {
