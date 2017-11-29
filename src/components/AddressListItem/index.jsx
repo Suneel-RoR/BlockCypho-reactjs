@@ -1,9 +1,6 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
-import moment from 'moment'
-import styles from './address-list-item.css'
-import RemoveAddressFromWallet from '../RemoveAddressFromWallet'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import RemoveAddressFromWallet from "../RemoveAddressFromWallet";
+import PropTypes from "prop-types";
 
 const propTypes = {
   coin: PropTypes.string.isRequired,
@@ -11,13 +8,9 @@ const propTypes = {
   wallet: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   onRemoveAddressFromWallet: PropTypes.func.isRequired
-}
+};
 
 class AddressListItem extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <tr>
@@ -28,13 +21,14 @@ class AddressListItem extends Component {
             chain={this.props.chain}
             wallet={this.props.wallet}
             address={this.props.address}
-            onRemoveAddressFromWallet={this.props.onRemoveAddressFromWallet}/>
+            onRemoveAddressFromWallet={this.props.onRemoveAddressFromWallet}
+          />
         </td>
       </tr>
-    )
+    );
   }
 }
 
-AddressListItem.propTypes = propTypes
+AddressListItem.propTypes = propTypes;
 
-export default AddressListItem
+export default AddressListItem;
